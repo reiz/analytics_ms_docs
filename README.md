@@ -41,8 +41,8 @@ If that is not the case, you can start a MongoBD Docker Container with this comm
 docker run --name mongodb -p 27017:27017 -p 28017:28017 -d versioneye/mongodb:3.4.6
 ```
 
-## 8. Extend - Create Endpoint
-
+You don't have to use MongoDB in Docker. If you have MongoDB already installed natively, 
+you can use that installation as well. 
 After you fixed the application and make it run successfully, 
 you can reach it in the browser under `http://localhost:8080`. 
 There are 2 Endpoints available: 
@@ -50,9 +50,12 @@ There are 2 Endpoints available:
  - `http://localhost:8080/logs`
  - `http://localhost:8080/logs/count`
 
-Add another Endpoint which is available under `http://localhost:8080/logs/create` through HTTP POST. 
+## 8. Extend - Create 
+
+Add another Endpoint which is available under `http://localhost:8080/logs/` through HTTP POST. 
 The Endpoint should accept a JSON payload in the HTTP Body, build a `Log` Model out of it 
-and create a new entry in the database.
+and create a new entry in the database. In the case of success, this Endpoint should return the newly created ID 
+of the submitted Entity. 
 
 You can use Postman to build and fire an HTTP POST Request. 
 
@@ -63,15 +66,20 @@ The last part should be the primary ID of the Log entity in the database.
 The Endpoint should load the corresponding object from the database and 
 return it's JSON representation via HTTP Response. 
 
-## 10. Extend - Scheduler
+## 10. Extends - Update
+
+Build another Endpoint which alows the manipulation of an existing Entity. Choose the URI path 
+by yourself and follow the best practices of REST APIs. 
+
+## 11. Extend - Scheduler
 
 There is a class `ScheduledTask` with the method `runBackgroundJob()`. 
 Configure the application that way, that the method is executed every 5 seconds in the background. 
 
-## 11. Build the Docker image
+## 12. Build the Docker image
 
 Build a Docker image with the application in it and call it `liveperson/spring:0.0.1`. 
 
-## 12. Run Docker
+## 13. Run Docker
 
 Run the Docker container that way that the application is available under `http://localhost:8080` on the Host system.
