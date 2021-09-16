@@ -66,7 +66,7 @@ The last part should be the primary ID of the Log entity in the database.
 The Endpoint should load the corresponding object from the database and 
 return it's JSON representation via HTTP Response. 
 
-## 10. Extends - Update
+## 10. Extend - Update
 
 Build another Endpoint which alows the manipulation of an existing Entity. Choose the URI path 
 by yourself and follow the best practices of REST APIs. 
